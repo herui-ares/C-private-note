@@ -188,7 +188,7 @@ queue<int> que1;
 deque<int> que;
 ```
 
-<img src="D:\softinstall\Typora\Typora\队列2.png" alt="队列2" style="zoom:50%;" />
+![image](https://github.com/herui-ares/C-private-note/blob/main/%E9%98%9F%E5%88%972.png)
 
 - push_back(elem);//在容器尾部添加一个数据
 - push_front(elem);//在容器头部插入一个数据
@@ -242,14 +242,15 @@ public:
 
 国内教程定义：一个二叉树，如果每一个层的结点数都达到最大值，则这个二叉树就是满二叉树。也就是说，如果一个二叉树的层数为K，且结点总数是(2^k) -1 ，则它就是满二叉树。
 
-<img src="D:\softinstall\Typora\Typora\满二叉树.jpg" alt="满二叉树" style="zoom: 25%;" />
+![image](https://github.com/herui-ares/C-private-note/blob/main/%E6%BB%A1%E4%BA%8C%E5%8F%89%E6%A0%91.jpg)
 
 **完全二叉树**
 
 设二叉树的深度为h，除第 h 层外，其它各层 (1～h-1) 的结点数都达到最大个数，
 第 h 层所有的结点都连续集中在最左边
 
-<img src="D:\softinstall\Typora\Typora\完全二叉树.jpg" alt="完全二叉树" style="zoom: 25%;" />
+
+![image](https://github.com/herui-ares/C-private-note/blob/main/%E5%AE%8C%E5%85%A8%E4%BA%8C%E5%8F%89%E6%A0%91.jpg)
 
 满二叉树肯定是完全二叉树，而完全二叉树不一定是满二叉树。
 
@@ -262,8 +263,7 @@ public:
 任意节点的子树的高度差都小于等于1。
 
 **遍历方式**
-
-<img src="D:\softinstall\Typora\Typora\二叉树.jpg" alt="二叉树" style="zoom: 33%;" />
+![image](https://github.com/herui-ares/C-private-note/blob/main/%E4%BA%8C%E5%8F%89%E6%A0%91.jpg)
 
 - 深度优先遍历：先往深走，遇到叶子节点再往回走。
   - 前序遍历（递归法，迭代法）1245367
@@ -461,7 +461,7 @@ public:
 
 **二叉树最大深度、最小深度、节点**
 
-<img src="D:\softinstall\Typora\Typora\二叉树1.png" alt="二叉树1" style="zoom:60%;" />
+![image](https://github.com/herui-ares/C-private-note/blob/main/%E4%BA%8C%E5%8F%89%E6%A0%911.png)
 
 后序遍历
 
