@@ -173,7 +173,7 @@ stack<int> stIn
 queue<int> que1;
 ```
 
-<img src="D:\softinstall\Typora\Typora\队列1.png" alt="队列1" style="zoom:50%;" />
+![image]https://github.com/herui-ares/C-private-note/blob/main/%E9%98%9F%E5%88%971.png
 
 - push(x) -- 将一个元素放入队列的尾部。
 - pop() -- 从队列首部移除元素。
