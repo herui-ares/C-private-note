@@ -1,5 +1,6 @@
 # C-private-note
-This is my personal notes about C Plus Plus. Please quit there, if you came in accidentally. 
+This is my personal notes about C Plus Plus. Please quit there, if you came in accidentally. The notes will be continually updated.
+
 **定义函数的参数传入**
 
 注意取址符号
