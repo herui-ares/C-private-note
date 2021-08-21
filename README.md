@@ -1,6 +1,41 @@
 # C-private-note
 This is my personal notes about C Plus Plus. Please quit there, if you came in accidentally. The notes will be continually updated.
 
+**C++万能头文件**
+
+```c++
+#include<bits/stdc++.h>
+```
+
+**函数变量英文命名**
+
+**虚拟头结点 dummyHead**
+
+如果题目要求链表需要前节点操作，则用虚拟链表
+
+```c++
+ListNode* dumyHead = new ListNode(0);
+dumyHead->next = head;
+```
+
+
+
+**vector中没有find(), map和set中有**139题中先将vector<string> 复制在set中，用find查找
+
+**string insert/erase**  leetcode93
+
+```c++
+string s = "abcde";
+int i = 1;
+s.insert(i + 1, ".");//插入字符串
+//或者用迭代器
+s.insert(s.begin() + i + 1, '.');//插入字符
+s.erase(i + 1, 1); 
+```
+
+**C++运算符优先级列表**
+![优先级](D:\softinstall\Typora\Typora\优先级.jpg)
+
 **定义函数的参数传入**
 
 注意取址符号
@@ -10,6 +45,65 @@ frontTree(TreeNode* cur, int i, string s, vector<int>& res){
 
 };
 ```
+### **STL**标准库函数
+
+#### 顺序容器
+
+顺序容器有以下三种：可变长动态数组 vector、双端队列 deque、双向链表 list。
+
+#### 关联容器
+
+关联容器有以下四种：set、multiset、map、multimap。
+
+所有容器都有以下两个成员函数：
+
+- int size()：返回容器对象中元素的个数。
+- bool empty()：判断容器对象是否为空。
+
+
+ 顺序容器和关联容器还有以下成员函数：
+
+- begin()：返回指向容器中第一个元素的迭代器。
+- end()：返回指向容器中最后一个元素后面的位置的迭代器。
+- rbegin()：返回指向容器中最后一个元素的反向迭代器。
+- rend()：返回指向容器中第一个元素前面的位置的反向迭代器。
+- erase(...)：从容器中删除一个或几个元素。该函数参数较复杂，此处省略。
+- clear()：从容器中删除所有元素。
+
+
+ 如果一个容器是空的，则 begin() 和 end() 的返回值相等，rbegin() 和 rend() 的返回值也相等。
+
+ 顺序容器还有以下常用成员函数：
+
+- front()：返回容器中第一个元素的引用。
+- back()：返回容器中最后一个元素的引用。
+- push_back()：在容器末尾增加新元素。
+- pop_back()：删除容器末尾的元素。
+- insert(...)：插入一个或多个元素。该函数参数较复杂，此处省略。
+
+**哈希表也可以for用遍历**
+
+```c++
+unordered_map<char, int> ori, cnt;
+for (auto& p : ori) {
+     if (cnt[p.first] < ori[p.first]) {
+        return false;
+    }
+}
+```
+
+**优先级队列**
+
+```c++
+priority_queue<int, vector<int>> pq;//默认的是vector<int>  并且是最大值优先队列，也可以用deque<int>
+//也可以省略
+priority_queue<int> pq;
+priority_queue<int, vector<int>， greater<int>> pq; //最小值优先队列
+
+
+```
+
+
 
 **用迭代器建立哈希表**
 
@@ -22,6 +116,16 @@ unordered_set<int> ins_set(nums1.begin(), nums1.end());
 ```c++
 return vector<int>(res_set.begin(), res_set.end());
 ```
+**拷贝vector**
+
+```c++
+//inorder = [3,9,20,15,7] inIndex = 1;
+vector<int> inLeft(inorder.begin(), inorder.begin() + inIndex);
+vector<int> inRight(inorder.begin() + inIndex + 1, inorder.end());
+//则inLeft = [3]  注意并没有拷贝9
+//inRight = [20,15,7]
+```
+
 
 **返回map中与temp相同元素的数量**
 
@@ -35,6 +139,14 @@ res = map.count(temp);
 ```c++
 res = map.find(temp);
 ```
+**取hash表的值**
+
+```c++
+for(auto it = hashStr.begin(); it != hashStr.end(); it++) {
+   res.push_back(it->second);
+}
+```
+
 
 **移除s.begin()到i的字符串，其复杂度为O(n)**
 
@@ -71,6 +183,24 @@ sort(result.begin(), result.end());
 ```c++
 sort(result.begin(), result.end(), greater<int>());
 ```
+**sort自定义规则**
+
+```c++
+//是vector的内置，string 不能用
+必须得加static
+static bool cmp(const int& a, const int& b) {
+	return a > b; //从大到小排序  	//如果返回为真，则将第一个数放在前面
+	//return a < b; //从 小到大排序
+}
+sort(nums.begin(), nums.end(), cmp);
+sort(strs.begin(), strs.end(), [](string& x, string& y){ return x + y < y + x; });
+sort(nums.begin(), nums.end(), [] (int& a, int& b)  {
+            string stra = to_string(a);
+            string strb = to_string(b);
+            return  stra + strb < strb + stra;
+        });
+```
+
 
 **单引号、双引号** 
 
@@ -571,5 +701,23 @@ public:
         return result;
     }
 };
-```
+	//判断平衡二叉树（用最大高度）
+class Solution {
+public:
+    // 返回以该节点为根节点的二叉树的高度，如果不是二叉搜索树了则返回-1
+    int getDepth(TreeNode* node) {
+        if (node == NULL) {
+            return 0;
+        }
+        int leftDepth = getDepth(node->left);
+        if (leftDepth == -1) return -1; // 说明左子树已经不是二叉平衡树
+        int rightDepth = getDepth(node->right);
+        if (rightDepth == -1) return -1; // 说明右子树已经不是二叉平衡树
+        return abs(leftDepth - rightDepth) > 1 ? -1 : 1 + max(leftDepth, rightDepth);
+    }
+    bool isBalanced(TreeNode* root) {
+        return getDepth(root) == -1 ? false : true; 
+    }
+};
 
+```
