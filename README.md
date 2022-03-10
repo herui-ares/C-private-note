@@ -99,7 +99,14 @@ priority_queue<int, vector<int>> pq;//默认的是vector<int>  并且是最大�
 //也可以省略
 priority_queue<int> pq;
 priority_queue<int, vector<int>， greater<int>> pq; //最小值优先队列
-
+// 定义一个小顶堆，大小为k
+class mycomparison {
+    public:
+        bool operator()(const pair<int, int>& lhs, const pair<int, int>& rhs) {
+            return lhs.second > rhs.second;
+        }
+    };
+priority_queue<pair<int, int>, vector<pair<int, int>>, mycomparison> pri_que;
 
 ```
 
